@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MakeXA - Smart Products & Reselling Platform</title>
+
+<meta name="description" content="MakeXA is a smart everyday product and reselling platform offering quality products, secure login, and trusted service.">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f8f9fa;
+    line-height:1.6;
+    scroll-behavior:smooth;
+    color:#333;
+}
+a{text-decoration:none}
+header{
+    background:#0077cc;
+    padding:10px;
+    text-align:right;
+}
+header .btn{margin-left:5px}
+
+.hero{
+    background:linear-gradient(to right,#0077cc,#28a745);
+    color:white;
+    padding:90px 15px;
+    text-align:center;
+}
+
+section{
+    padding:60px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.review{
+    background:#e6f0ff;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+footer{
+    background:#343a40;
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+footer a{
+    color:white;
+    margin:0 10px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    z-index:9999;
+    overflow:auto;
+}
+
+.modal-content{
+    background:#fff;
+    max-width:600px;
+    margin:60px auto;
+    padding:30px;
+    border-radius:10px;
+}
+
+.close-btn{
+    float:right;
+    font-size:22px;
+    cursor:pointer;
+    color:#0077cc;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a class="btn btn-light" id="loginBtn" onclick="openModal('loginModal')">Login</a>
+    <a class="btn btn-light" id="signupBtn" onclick="openModal('signupModal')">Sign Up</a>
+    <a class="btn btn-warning" id="logoutBtn" onclick="logout()" style="display:none">Logout</a>
+</header>
+
+<section class="hero" id="home">
+    <h1>MakeXA</h1>
+    <p>Make your daily life easier, faster, and better</p>
+    <p>Smart everyday products and trusted reselling platform</p>
+    <a href="#products" class="btn btn-light btn-lg">Shop Now</a>
+</section>
+
+<section class="container">
+    <h2>What is this product?</h2>
+    <p>
+        This is a high-quality smart everyday product designed to simplify daily tasks.
+        It helps save time, reduce effort, and improve comfort.
+    </p>
+
+    <h2>Why you need it</h2>
+    <ul>
+        <li>Easy to use for everyone</li>
+        <li>Saves valuable time</li>
+        <li>Strong and durable material</li>
+        <li>Suitable for all ages</li>
+        <li>Affordable pricing</li>
+    </ul>
+</section>
+
+<section class="container">
+    <h2>How to Use</h2>
+    <ol>
+        <li>Unbox the product carefully</li>
+        <li>Follow the simple usage instructions</li>
+        <li>Enjoy instant results</li>
+    </ol>
+</section>
+
+<section class="container" id="products">
+    <h2 class="text-center mb-4">Featured Products</h2>
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="https://via.placeholder.com/300" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>Smart Everyday Product</h5>
+                    <p><del>৳1999</del> <strong>৳1499</strong></p>
+                    <p>Free delivery | Cash on Delivery</p>
+                    <button class="btn btn-primary" onclick="buyNow()">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="https://via.placeholder.com/300" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>Wireless Headphones</h5>
+                    <p>৳4999</p>
+                    <button class="btn btn-primary" onclick="buyNow()">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="container">
+    <h2>Customer Reviews</h2>
+
+    <div class="review">
+        “This product really helped me. Very easy to use.”  
+        – Rahim, Dhaka
+    </div>
+
+    <div class="review">
+        “Good quality and fast delivery.”  
+        – Ayesha
+    </div>
+</section>
+
+<section class="container">
+    <h2>Why Trust Us</h2>
+    <ul>
+        <li>100% original products</li>
+        <li>Secure login system</li>
+        <li>Cash on delivery</li>
+        <li>Easy return policy</li>
+        <li>Customer support available</li>
+    </ul>
+</section>
+
+<section class="container">
+    <h2>Delivery & Return</h2>
+
+    <p>Delivery time:</p>
+    <ul>
+        <li>Inside Dhaka: 1–3 days</li>
+        <li>Outside Dhaka: 2–7 days</li>
+        <li>Outside Bangladesh: 7–15 days</li>
+    </ul>
+
+    <p>Return policy: 7 days easy return if product is damaged</p>
+</section>
+
+<section class="container" id="contact">
+    <h2>Contact Us</h2>
+    <p>Phone / WhatsApp: 01408192518</p>
+    <p>Email: forrukhahmed253@gmail.com</p>
+</section>
+
+<footer>
+    <p>
+        <a href="#" onclick="openModal('terms')">Terms & Conditions</a> |
+        <a href="#" onclick="openModal('privacy')">Privacy Policy</a> |
+        <a href="#contact">Contact</a>
+    </p>
+    <p>© 2026 MakeXA. All rights reserved.</p>
+</footer>
+
+<!-- LOGIN -->
+<div class="modal" id="loginModal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+<h3>Login</h3>
+<input id="loginEmail" placeholder="Email">
+<input id="loginPass" type="password" placeholder="Password">
+<button class="btn btn-primary btn-block" onclick="login()">Login</button>
+</div>
+</div>
+
+<!-- SIGNUP -->
+<div class="modal" id="signupModal">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
+<h3>Sign Up</h3>
+<input id="name" placeholder="Full Name">
+<input id="email" placeholder="Email">
+<input id="phone" placeholder="Phone">
+<input id="pass" type="password" placeholder="Password">
+<button class="btn btn-success btn-block" onclick="signup()">Sign Up</button>
+</div>
+</div>
+
+<!-- TERMS -->
+<div class="modal" id="terms">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('terms')">&times;</span>
+
+<h2>Terms & Conditions</h2>
+
+<p>Welcome to MakeXA. By using this website, you agree to these terms.</p>
+
+<h3>Products and Orders</h3>
+<ul>
+<li>Products are sold as described.</li>
+<li>Prices may change without notice.</li>
+<li>Orders may be refused if necessary.</li>
+</ul>
+
+<h3>Payments</h3>
+<ul>
+<li>Cash on delivery and online payments may be available.</li>
+<li>Correct information must be provided.</li>
+</ul>
+
+<h3>Returns</h3>
+<ul>
+<li>Damaged products can be returned within 7 days.</li>
+<li>Refunds depend on inspection.</li>
+</ul>
+
+<h3>User Responsibility</h3>
+<ul>
+<li>No misuse of the website.</li>
+<li>No illegal copying or hacking.</li>
+</ul>
+
+</div>
+</div>
+
+<!-- PRIVACY -->
+<div class="modal" id="privacy">
+<div class="modal-content">
+<span class="close-btn" onclick="closeModal('privacy')">&times;</span>
+
+<h2>Privacy Policy</h2>
+
+<p>We respect your privacy.</p>
+
+<h3>Information Collected</h3>
+<ul>
+<li>Name, email, phone</li>
+<li>Order details</li>
+</ul>
+
+<h3>Data Usage</h3>
+<ul>
+<li>Order processing</li>
+<li>Customer support</li>
+</ul>
+
+<h3>Security</h3>
+<p>We use standard security practices to protect your data.</p>
+
+</div>
+</div>
+
+<script>
+let user=null;
+
+function openModal(id){
+    document.getElementById(id).style.display='block';
+}
+function closeModal(id){
+    document.getElementById(id).style.display='none';
+}
+
+function signup(){
+    user={name:document.getElementById('name').value};
+    closeModal('signupModal');
+    updateUI();
+    alert("Sign up successful");
+}
+
+function login(){
+    user={};
+    closeModal('loginModal');
+    updateUI();
+    alert("Login successful");
+}
+
+function logout(){
+    user=null;
+    updateUI();
+    alert("Logged out");
+}
+
+function updateUI(){
+    loginBtn.style.display=user?'none':'inline-block';
+    signupBtn.style.display=user?'none':'inline-block';
+    logoutBtn.style.display=user?'inline-block':'none';
+}
+
+function buyNow(){
+    if(!user){
+        alert("Please login to buy");
+        return;
+    }
+    alert("Order placed successfully");
+}
+</script>
+
+</body>
+          </html>
